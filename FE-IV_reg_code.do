@@ -6,14 +6,13 @@
 /*Note: This do-file is for replicating the regression results presented in the supplementary information.
 We used Stata 15.0 for regression analysis.
 Data and code should be downloaded and saved in the same folder.
-This do-file only includes the code without sptatial autocorrelatio correction.
+This do-file only includes the code without sptatial autocorrelation correction.
 To calculate the spatial robust standard errors, please use the "bird_conley_code.do" file and follow the instructions.
 To access "bird_conley_code.do" and any updates in the code and data, please go to
 https://github.com/jewelli/Neonics-birds/
 */
 *******************************************************************************
 
-cd "C:\Users\yijiali4\Box Sync\Backup\Biodiversity\NATSUSTAIN-19114702_data_code_forsubmission"
 
 ****************************************************************************
 ***Table S4
