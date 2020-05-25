@@ -1,4 +1,4 @@
-# Neonics-birds
+# "Neonicotinoids and Decline in Bird Biodiversity in the United States"
 
 Overview\
 This repository contains the data and code used in "Neonicotinoids and Decline in Bird Biodiversity in the United States". The purpose is to guide anyone interested in replicating the regression results we had. All data are made publicly available in this repository.
