@@ -6,14 +6,38 @@
 /*Note: This do-file is for replicating the regression results presented in the supplementary information.
 We used Stata 15.0 for regression analysis.
 Data and code should be downloaded and saved in the same folder.
-This do-file only includes the code without sptatial autocorrelation correction.
+This do-file only includes the code without sptatial autocorrelatio correction.
 To calculate the spatial robust standard errors, please use the "bird_conley_code.do" file and follow the instructions.
 To access "bird_conley_code.do" and any updates in the code and data, please go to
-https://github.com/jewelli/Neonics-birds/
+https://github.com/jewelli/Neonics-birds.git
 */
 *******************************************************************************
 
+cd "C:\Users\yijiali4\Box Sync\Backup\Biodiversity\NATSUSTAIN-19114702_data_code_forsubmission"
 
+****************************************************************************
+***Table S2 Summary Statistics at the county level
+****************************************************************************
+use  grassland_birds_county.dta, clear
+su sum_grass_no spnumber  sum_shannon 
+su total_neon epest non_neon crop_acre  develop_acre mtemp1 mtemp4 mtemp5 mtemp6 lag_mtemp12  pcpn1 pcpn4 pcpn5 pcpn6  lag_pcpn12 pop_den total_neon_most
+su pest_price herb_price insec_price lag_fertp
+
+*****insectivorous birds
+use  insectivorous_birds_county, clear
+su sum_insect_no  insspnumber  inssum_shannon  
+
+***Non-grassland birds
+use  non-grassland_birds_county.dta, clear
+su  sum_ngrass_no  ngrspnumber  sum_shannonngr 
+  
+*****non-insectivorous birds
+use  non-insectivorous_birds_county.dta, clear
+su sum_ninsect_no   ninspnumber  sum_shannonnin 
+
+  
+
+  
 ****************************************************************************
 ***Table S4
 ****************************************************************************
@@ -193,6 +217,29 @@ xtivreg2  ninspnumber  develop_acre mtemp1 mtemp4 mtemp5 mtemp6 lag_mtemp12 pcpn
 *Shannon's Index
 xtivreg2  sum_shannonnin develop_acre mtemp1 mtemp4 mtemp5 mtemp6 lag_mtemp12 pcpn1 pcpn4 pcpn5 pcpn6 lag_pcpn12  pop_den ( total_neon_most   crop_acre =  pest_price lag_fertp ), fe robust 
 
+
+
+****************************************************************************
+***Table S8 Summary statistics at the CRD level
+****************************************************************************
+***grassland birds
+use grassland_birds_CRD, clear
+su sum_crd_grass crd_spnumber  crd_shannon
+su  total_neoncrd epestcrd non_neoncrd  crop_acrecrd develop_acrecrd lag_mtemp12crd mtemp1crd mtemp4crd mtemp5crd mtemp6crd lag_pcpn12crd pcpn1crd pcpn4crd pcpn5crd pcpn6crd  pop_dencrd  total_neon_mostcrd
+
+
+***non-grassland birds
+use non-grassland_birds_CRD.dta,clear
+
+ sum_crd_nongrs  crd_ngrspnumber  crd_ngrshannon 
+
+***insectivorous birds
+use  insectivorous_birds_CRD, clear
+ sum_crd_insect  crd_inspnumber crd_inshannon 
+
+***Non-insectivorous bird
+use non-insectivorous_birds_CRD.dta, clear
+sum_crd_nonins  crd_ninspnumber crd_ninshannon 
 
 
 
